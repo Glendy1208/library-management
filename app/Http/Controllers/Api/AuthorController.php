@@ -110,4 +110,17 @@ class AuthorController extends Controller
             return response()->json(['message' => 'Author cannot be deleted, because has books recored'], 403);
         }
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function books(Author $id)
+    {
+        $books = $id->book()->select('id', 'title', 'description', 'publish_date')->get();
+        if ($books->isEmpty()) {
+            return response()->json(['message' => 'No books found for this author'], 404);
+        } else {
+            return response()->json($books, 200);
+        }
+    }
 }

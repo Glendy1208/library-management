@@ -24,4 +24,4 @@ Route::put('/books/{id}', [BookController::class, 'update']); // Update an exist
 Route::delete('/books/{id}', [BookController::class, 'destroy']); // Delete a book
 
 // Associations API Endpoints
-// Route::get('/authors/{id}/books', [AuthorController::class, 'books']); // Retrieve all books by a specific author
+Route::get('/authors/{id}/books', [AuthorController::class, 'books']); // Retrieve all books by a specific author
