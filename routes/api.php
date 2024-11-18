@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\AuthorController;
 
 Route::get('/user', function (Request $request) {
@@ -16,11 +17,11 @@ Route::put('/authors/{id}', [AuthorController::class, 'update']); // Update an e
 Route::delete('/authors/{id}', [AuthorController::class, 'destroy']); // Delete an author
 
 // Books API Endpoints
-// Route::get('/books', [BookController::class, 'index']); // Retrieve a list of all books
-// Route::get('/books/{id}', [BookController::class, 'show']); // Retrieve details of a specific book
-// Route::post('/books', [BookController::class, 'store']); // Create a new book
-// Route::put('/books/{id}', [BookController::class, 'update']); // Update an existing book
-// Route::delete('/books/{id}', [BookController::class, 'destroy']); // Delete a book
+Route::get('/books', [BookController::class, 'index']); // Retrieve a list of all books
+Route::get('/books/{id}', [BookController::class, 'show']); // Retrieve details of a specific book
+Route::post('/books', [BookController::class, 'store']); // Create a new book
+Route::put('/books/{id}', [BookController::class, 'update']); // Update an existing book
+Route::delete('/books/{id}', [BookController::class, 'destroy']); // Delete a book
 
 // Associations API Endpoints
 // Route::get('/authors/{id}/books', [AuthorController::class, 'books']); // Retrieve all books by a specific author

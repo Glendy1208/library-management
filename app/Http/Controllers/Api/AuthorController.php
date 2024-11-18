@@ -15,11 +15,11 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
+        $authors = Author::select('id', 'name')->get();
         if ($authors->isEmpty()) {
             return response()->json(['message' => 'No authors found'], 404);
         } else {   
-            return AuthorResource::collection($authors);
+            return response()->json($authors, 200);
         }
     }
 
@@ -39,7 +39,14 @@ class AuthorController extends Controller
                 'message' => 'Validation failed',
                 'errors' => $validatedData->errors(),
             ], 422);
-        } 
+        }
+
+        $existingAuthor = Author::where('name', $request['name'])->first();
+        if ($existingAuthor) {
+            return response()->json([
+            'message' => 'Author with this name already exists',
+            ], 409);
+        }
 
         $data = Author::create([
             'name' => $request['name'],
