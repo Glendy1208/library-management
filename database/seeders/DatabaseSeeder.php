@@ -48,24 +48,28 @@ class DatabaseSeeder extends Seeder
 
         // SEEDER BOOKS
         Book::create([
+            'id' => '048947e6-8e91-4ee5-a34b-6d38d805bc4b',
             'title' => 'Harry Potter and the Philosopher\'s Stone',
             'description' => 'Harry Potter has been living a dull life with the Dursleys, but on his eleventh birthday, he learns he is a wizard and is to attend Hogwarts School of Witchcraft and Wizardry.',
             'publish_date' => '1997-06-26',
             'author_id' => $a1,
         ]);
         Book::create([
+            'id' => '1af4e6c1-8638-4f5b-bb4c-01a1943ae8a5',
             'title' => 'Harry Potter and the Chamber of Secrets',
             'description' => 'Harry Potter is in his second year of Hogwarts School of Witchcraft and Wizardry. He is visited by a house-elf named Dobby and warned not to go back to Hogwarts.',
             'publish_date' => '1998-07-02',
             'author_id' => $a1,
         ]);
         Book::create([
+            'id' => '73468c98-d9cd-4338-96be-7826748c5fbd',
             'title' => 'The Hobbit',
             'description' => 'The Hobbit is set within Tolkien\'s fictional universe and follows the quest of home-loving Bilbo Baggins, the titular hobbit, to win a share of the treasure guarded by Smaug the dragon.',
             'publish_date' => '1937-09-21',
             'author_id' => $a2,
         ]);
         Book::create([
+            'id' => '9b44f592-3875-4a23-84d6-b6ae9bc153e2',
             'title' => 'A Game of Thrones',
             'description' => 'A Game of Thrones is the first novel in A Song of Ice and Fire, a series of fantasy novels by the American author George R. R. Martin.',
             'publish_date' => '1996-08-06',
