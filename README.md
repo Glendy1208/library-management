@@ -1,7 +1,6 @@
 ## Overview
 
 
-
 ## Installation
 1. make sure you have already install composer and local server environments like laragon or xampp
 2. clone this repository in terminal, with this command "git clone  https://github.com/Glendy1208/library-management.git"
@@ -26,5 +25,8 @@
 in the folder seeder, you can use a factory create or my mannually create. <br>
 after that run "php artisan migrate:fresh --seed"
 
-### Testing (PHPunit)
-
+## Testing (PHPunit)
+For testing, I use PHPunit because it default testing in laravel. so no need to installing PHPunit.
+**Step to run testing**
+1. create a folder named "Unit" in folder "tests"
+2. run "php artisan test"
