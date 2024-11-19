@@ -46,6 +46,7 @@ A RESTful API built with **Laravel 11** for managing authors and books in a libr
 9. run "php artisan key:generate"
 10. run "php artisan migrate"
 11. run "php artisan serve"
+12. you can test with postman mannualy or using PHPunit (tutorial in bottom) 
 
 ---
 
