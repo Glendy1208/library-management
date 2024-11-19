@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // FACTORY
         // Author::factory(10)->create();
-        // Book::factory(10)->create();
+        // Book::factory(20)->create();
 
         // SEEDER AUTHORS
         $a1 = 'bed2e708-b2b3-497d-9ae4-69e6040beb92';
@@ -72,6 +72,5 @@ class DatabaseSeeder extends Seeder
             'publish_date' => '1996-08-06',
             'author_id' => $a3,
         ]);
-        
     }
 }

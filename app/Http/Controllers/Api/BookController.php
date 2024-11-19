@@ -7,6 +7,7 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 
 class BookController extends Controller
 {
@@ -15,7 +16,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::select('id', 'title')->get();
+        $books = Cache::remember('books_list', now()->addMinutes(10), function () {
+            return Book::select('id', 'title')->get();
+        });
+
         if ($books->isEmpty()) {
             return response()->json(['message' => 'No books found'], 404);
         } else {
@@ -55,6 +59,8 @@ class BookController extends Controller
             'publish_date' => $request['publish_date'],
             'author_id' => $request['author_id'],
         ]);
+
+        Cache::forget('books_list');
 
         return response()->json([
             'message' => 'Book created successfully',
@@ -96,6 +102,8 @@ class BookController extends Controller
             'author_id' => $request['author_id'],
         ]);
 
+        Cache::forget('books_list');
+
         return response()->json([
             'message' => 'Book update successfully',
             'data' => new BookResource($id),
@@ -108,6 +116,7 @@ class BookController extends Controller
     public function destroy(Book $id)
     {
         $id->delete();
+        Cache::forget('authors_list');
         return response()->json(['message' => 'Book deleted successfully'], 200);
     }
 }

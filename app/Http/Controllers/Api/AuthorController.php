@@ -7,6 +7,7 @@ use App\Http\Resources\AuthorResource;
 use App\Models\Author;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AuthorController extends Controller
 {
@@ -15,7 +16,10 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::select('id', 'name')->get();
+        $authors = Cache::remember('authors_list', now()->addMinutes(10), function () {
+            return Author::select('id', 'name')->get();
+        });
+
         if ($authors->isEmpty()) {
             return response()->json(['message' => 'No authors found'], 404);
         } else {   
@@ -53,6 +57,8 @@ class AuthorController extends Controller
             'bio' => $request['bio'],
             'birth_date' => $request['birth_date'],
         ]);
+
+        Cache::forget('authors_list');
 
         return response()->json([
             'message' => 'Author created successfully',
@@ -92,6 +98,9 @@ class AuthorController extends Controller
             'birth_date' => $request['birth_date'],
         ]);
 
+        Cache::forget("author_{$id->id}_books");
+        Cache::forget('authors_list');
+
         return response()->json([
             'message' => 'Author Updated successfully',
             'data' => new AuthorResource($id),
@@ -105,6 +114,10 @@ class AuthorController extends Controller
     {
         try {
             $id->delete();
+
+            Cache::forget("author_{$id->id}_books");
+            Cache::forget('authors_list');
+
             return response()->json(['message' => 'Author deleted successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Author cannot be deleted, because has books recored'], 403);
@@ -116,7 +129,9 @@ class AuthorController extends Controller
      */
     public function books(Author $id)
     {
-        $books = $id->book()->select('id', 'title', 'description', 'publish_date')->get();
+        $books = Cache::remember("author_{$id->id}_books", now()->addMinutes(10), function () use ($id) {
+            return $id->book()->select('id', 'title', 'description', 'publish_date')->get();
+        });
         if ($books->isEmpty()) {
             return response()->json(['message' => 'No books found for this author'], 404);
         } else {
