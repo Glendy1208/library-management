@@ -17,7 +17,7 @@ class BookController extends Controller
     {
         $books = Book::select('id', 'title')->get();
         if ($books->isEmpty()) {
-            return response()->json(['message' => 'No authors found'], 404);
+            return response()->json(['message' => 'No books found'], 404);
         } else {
             return response()->json($books);
         }
