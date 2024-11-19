@@ -19,6 +19,7 @@ return new class extends Migration
             $table->uuid('author_id');
             $table->timestamps();
             $table->foreign('author_id')->references('id')->on('authors');
+            $table->index('author_id');
         });
     }
 
