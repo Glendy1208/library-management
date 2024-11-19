@@ -20,7 +20,7 @@ A RESTful API built with **Laravel 11** for managing authors and books in a libr
    - Detailed error responses for validation, not found, and conflict errors.
 
 5. **Caching**
-   - Frequently accessed data (e.g., author and book lists) cached for performance.
+   - Frequently accessed data (e.g., author lists, book lists, and book list of specific author) cached for performance.
 
 6. **Testing**
    - Comprehensive feature and edge case testing using PHPUnit.
