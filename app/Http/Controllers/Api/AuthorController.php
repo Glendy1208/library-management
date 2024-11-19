@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Cache;
 class AuthorController extends Controller
 {
     /**
-     * Display a listing of all author.
+     * Display a listing of all author (id and name).
      */
     public function index()
     {
@@ -28,7 +28,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly Author created resource in storage.
      */
     public function store(Request $request)
     {
@@ -67,7 +67,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Author.
      */
     public function show(Author $id)
     {
@@ -75,7 +75,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Author in storage.
      */
     public function update(Request $request, Author $id)
     {
@@ -108,7 +108,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Author from storage.
      */
     public function destroy(Author $id)
     {
@@ -125,7 +125,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display the books of the specified Author.
      */
     public function books(Author $id)
     {

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class AuthorFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Define the Author default state.
      *
      * @return array<string, mixed>
      */

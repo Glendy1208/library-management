@@ -17,8 +17,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // FACTORY
-        // Author::factory(10)->create();
-        // Book::factory(20)->create();
+        // Author::factory(100)->create();
+        // Book::factory(200)->create();
+
 
         // SEEDER AUTHORS
         $a1 = 'bed2e708-b2b3-497d-9ae4-69e6040beb92';
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
             'birth_date' => '1948-09-20',
         ]);
 
+        
         // SEEDER BOOKS
         Book::create([
             'id' => '048947e6-8e91-4ee5-a34b-6d38d805bc4b',
